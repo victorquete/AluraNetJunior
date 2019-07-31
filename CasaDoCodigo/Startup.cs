@@ -30,7 +30,7 @@ namespace CasaDoCodigo
             string connectionString = Configuration.GetConnectionString("Default");
 
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(connectionString)
+                options.UseSqlite(connectionString)
             );
 
             services.AddTransient<IDataService, DataService>();
