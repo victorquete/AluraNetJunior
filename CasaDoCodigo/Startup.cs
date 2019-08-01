@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using CasaDoCodigo.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace CasaDoCodigo
 {
@@ -26,6 +28,7 @@ namespace CasaDoCodigo
             services.AddMvc();
             services.AddDistributedMemoryCache();
             services.AddSession();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             string connectionString = Configuration.GetConnectionString("Default");
 
